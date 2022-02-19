@@ -41,6 +41,7 @@ public class Register extends AppCompatActivity {
     FirebaseFirestore fstore;
     String userID;
     CheckBox artist, customer;
+    boolean valid = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class Register extends AppCompatActivity {
         fstore = FirebaseFirestore.getInstance();
         artist = findViewById(R.id.Artist);
         customer = findViewById(R.id.Customer);
+
 
         if (fAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), Home.class));
@@ -127,6 +129,7 @@ public class Register extends AppCompatActivity {
                     if (customer.isChecked()) {
                         user.put("Customer", "1");
                     }
+
 
                     documentReference.set(user);
 

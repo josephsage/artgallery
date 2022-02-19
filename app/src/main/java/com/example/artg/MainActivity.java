@@ -7,6 +7,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     EditText email, password;
     FirebaseAuth fAuth;
     FirebaseFirestore fstore;
+    private CheckBox rememberme;
 
 
     @Override
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Register = (Button) findViewById(R.id.register_btn);
         email = findViewById(R.id.login_mail);
         password = findViewById(R.id.login_password);
+        rememberme = (CheckBox) findViewById(R.id.rememberme);
 
         // takes you to the register page
         Register.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, com.example.artg.Register.class);
                     startActivity(intent);
                 }
-                
+
 
             }
             private void checkUserAccessLevel(String uid){
@@ -77,7 +80,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         Toast.makeText(MainActivity.this, "Logged in.", Toast.LENGTH_SHORT).show();
                     }
-                    
+
+
                 });
             }
         });
